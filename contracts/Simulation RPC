@@ -1,0 +1,28 @@
+# simulate DAI minting by 0xe2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2
+# 0xf1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1 gets the minted DAI
+# Simulated on the latest block
+curl https://mainnet.gateway.tenderly.co/$TENDERLY_WEB3_GATEWAY_KEY \
+-X POST \
+-H "Content-Type: application/json" \
+-d \
+'{
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "tenderly_simulateTransaction",
+  "params": [
+    {
+      "from": "0xe2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2",
+      "to": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "gas": "0x7a1200",
+      "data": "0x40c10f19000000000000000000000000f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f1f10000000000000000000000000000000000000000000000001bc16d674ec80000"
+    },
+    "latest",
+    {
+      "0x6b175474e89094c44da98b954eedeac495271d0f": {
+        "stateDiff": {
+          "0xedd7d04419e9c48ceb6055956cbb4e2091ae310313a4d1fa7cbcfe7561616e03": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      }
+    }
+  ]
+}'
